@@ -13,7 +13,18 @@
       document.write(("[") + (GenerateRGBA()) + (", ") + (GenerateRGBA()) + (", ") + (GenerateRGBA()) + (", ") + (GenerateRGBA()) + (", ") + (GenerateRGBA()) + ("]"));
       document.close();
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
+    <script>
+      jQuery(document).ready(function ($) {
+    $(window).load(function () {
+        setTimeout(function(){
+            $('#preloader').fadeOut('slow', function () {
+            });
+        },2000);
+    });  
+}); // This code has been taken from an external source.
+    </script>
   </body>
 </html>
