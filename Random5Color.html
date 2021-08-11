@@ -2,11 +2,18 @@
 <html>
   <head>
     <script>
+      function ClampValue(Number) {
+        if (Number < 0.01) {
+          return 0.01;
+        } else {
+          return Number.toString().substring(0, 5);
+        }
+      }
       function GenerateRGBA() {
         var ColorR = Math.floor(Math.random() * 256);
         var ColorG = Math.floor(Math.random() * 256);
         var ColorB = Math.floor(Math.random() * 256);
-        var ColorA = Math.random();
+        var ColorA = ClampValue(Math.random());
         return (("[") + (ColorR) + (", ") + (ColorG) + (", ") + (ColorB) + (", ") + (ColorA) + ("]"));
       }
       document.open();
