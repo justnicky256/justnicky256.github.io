@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<input id="MainButton" type="file" accept="image/*">
+<br>
+<canvas id="MainCanvas">
+</canvas>
+<script>
+var MainCanvas = document.getElementById("MainCanvas");
+var MainButton = document.getElementById("MainButton");
+var MainContext = MainCanvas.getContext("2d");
+
+MainButton.addEventListener("change", MainFunction);
+
+function MainFunction(Img) {
+	var ImageURL = URL.createObjectURL(Img.target.files[0]);
+    var MainImage = new Image();
+    MainImage.onload = function() {
+    	var RandomPixelX = Math.floor(Math.random() * (MainImage.width));
+    	var RandomPixelY = Math.floor(Math.random() * (MainImage.height));
+    	MainCanvas.width = MainImage.width;
+        MainCanvas.height = MainImage.height;
+        MainContext.drawImage(MainImage, 0, 0);
+        var Result = MainContext.getImageData(RandomPixelX, RandomPixelY, 1, 1);
+        Result.data[0] = 255;
+        Result.data[1] = 0;
+        Result.data[2] = 0;
+        Result.data[3] = 255;
+        MainContext.putImageData(Result, RandomPixelX, RandomPixelY);
+    }
+    MainImage.src = ImageURL;
+}
+</script>
+</body>
+</html>
