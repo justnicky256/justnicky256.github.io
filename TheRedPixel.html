@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Upload an image, once uploaded it will display your image but with one random pixel changed to red. Once you find it, you can try again with a different image.</p>
-<br>
+<p>Upload an image, once uploaded it will display your image but with one random pixel changed to red. Once you find it, click it to win. Then you can try again with a different image.</p>
 <input id="MainButton" type="file" accept="image/*">
 <br>
-<canvas id="MainCanvas" style="image-rendering: pixelated;">
+<canvas id="MainCanvas" onclick="CheckPixel(event)" style="image-rendering: pixelated;">
 </canvas>
+<audio id="WinSound">
+	<source src="https://www.myinstants.com/media/sounds/win31.mp3" type="audio/mp3">
+</audio>
 <script>
 var MainCanvas = document.getElementById("MainCanvas");
 var MainButton = document.getElementById("MainButton");
+var WinSound = document.getElementById("WinSound");
 var MainContext = MainCanvas.getContext("2d");
+var CurrentPixelX = null;
+var CurrentPixelY = null;
 
 MainButton.addEventListener("change", MainFunction);
 
@@ -23,6 +28,9 @@ function MainFunction(Img) {
     	MainCanvas.width = MainImage.width;
         MainCanvas.height = MainImage.height;
         MainContext.drawImage(MainImage, 0, 0);
+        CurrentPixelX = RandomPixelX;
+        CurrentPixelY = RandomPixelY;
+        
         var Result = MainContext.getImageData(RandomPixelX, RandomPixelY, 1, 1);
         Result.data[0] = 255;
         Result.data[1] = 0;
@@ -31,6 +39,20 @@ function MainFunction(Img) {
         MainContext.putImageData(Result, RandomPixelX, RandomPixelY);
     }
     MainImage.src = ImageURL;
+}
+
+function CheckPixel(event) {
+	var MainRect = MainCanvas.getBoundingClientRect();
+	var MouseX = parseInt(event.clientX - MainRect.left);
+    var MouseY = parseInt(event.clientY - MainRect.top);
+    if (CurrentPixelX != null && CurrentPixelY != null) {
+    	if (MouseX == CurrentPixelX && MouseY == CurrentPixelY) {
+        	CurrentPixelX = null;
+            CurrentPixelY = null;
+        	MainContext.clearRect(0, 0, MainCanvas.width, MainCanvas.height);
+            WinSound.play();
+        }
+    }
 }
 </script>
 </body>
