@@ -55,6 +55,8 @@ function CheckPixel(event) {
             CurrentPixelY = null;
         	MainContext.clearRect(0, 0, MainCanvas.width, MainCanvas.height);
             WinSound.play();
+		MainCanvas.width = 0;
+		MainCanvas.height = 0;
         }
     }
 }
