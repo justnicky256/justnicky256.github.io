@@ -49,7 +49,7 @@ function CheckPixel(event) {
 	var MainRect = MainCanvas.getBoundingClientRect();
 	var MouseX = parseInt(event.clientX - MainRect.left);
     var MouseY = parseInt(event.clientY - MainRect.top);
-    if (CurrentPixelX != null && CurrentPixelY != null) {
+    if (Math.abs(MouseX - CurrentPixelX) <= 1 && Math.abs(MouseY - CurrentPixelY) <= 1) {
     	if (MouseX == CurrentPixelX && MouseY == CurrentPixelY) {
         	CurrentPixelX = null;
             CurrentPixelY = null;
