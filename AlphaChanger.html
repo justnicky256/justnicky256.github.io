@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Alpha Nullifier</title>
+<title>General Alpha Changer</title>
 </head>
 <body>
-<p>This file is used to set all the pixels' transparency to 0. This can be used to reveal hidden images on a transparent background.</p>
+<p>This file is used to set all the pixels' transparency to a fixed value. This can be used to reveal or hide images on a transparent background.</p>
 <input id="MainButton" type="file" accept="image/*">
+<input id="AlphaValue" type="text" placeholder="Alpha (0 - 255)">
 <br>
 <canvas id="MainCanvas" style="image-rendering: pixelated;">
 </canvas>
 <script type="text/javascript">
 var MainCanvas = document.getElementById("MainCanvas");
 var MainButton = document.getElementById("MainButton");
+var AlphaField = document.getElementById("AlphaValue");
 var MainContext = MainCanvas.getContext("2d");
 
 MainButton.addEventListener("change", MainFunction);
@@ -27,7 +29,7 @@ function MainFunction(Img) {
         
         var ContextData = MainContext.getImageData(0, 0, MainCanvas.width, MainCanvas.height)
         for (let Index = 0; Index < ContextData.data.length; Index += 4) {
-          ContextData.data[Index + 3] = 255;
+          ContextData.data[Index + 3] = AlphaField.value;
         }
         MainContext.putImageData(ContextData, 0, 0);
     }
