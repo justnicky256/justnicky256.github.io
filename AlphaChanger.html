@@ -6,7 +6,7 @@
 <body>
 <p>This page is used to set all the pixels' transparency to a fixed value. This can be used to reveal or hide images on a transparent background.</p>
 <input id="MainButton" type="file" accept="image/*">
-<input id="AlphaValue" type="text" placeholder="Alpha (0 - 255)">
+<input id="AlphaValue" type="number" placeholder="Alpha (0 - 255)" min="0" max="255">
 <br>
 <canvas id="MainCanvas" style="image-rendering: pixelated;">
 </canvas>
