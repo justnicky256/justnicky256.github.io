@@ -6,7 +6,7 @@
 <body>
 <p>This page is used to set all the pixels' transparency to a fixed value. This can be used to reveal or hide images on a transparent background.</p>
 <input id="MainButton" type="file" accept="image/*">
-<input id="AlphaValue" type="number" placeholder="Alpha" min="0" max="255">
+<input id="AlphaValue" style="width: 87px;" type="number" placeholder="Alpha (0 - 255)">
 <br>
 <canvas id="MainCanvas" style="image-rendering: pixelated;">
 </canvas>
@@ -27,7 +27,7 @@ function MainFunction(Img) {
     	MainCanvas.height = MainImage.height;
     	MainContext.drawImage(MainImage, 0, 0);
         
-        var ContextData = MainContext.getImageData(0, 0, MainCanvas.width, MainCanvas.height)
+        var ContextData = MainContext.getImageData(0, 0, MainCanvas.width, MainCanvas.height);
         for (let Index = 0; Index < ContextData.data.length; Index += 4) {
           ContextData.data[Index + 3] = AlphaField.value;
         }
