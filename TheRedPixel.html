@@ -50,7 +50,6 @@ function CheckPixel(event) {
 	var MouseX = parseInt(event.clientX - MainRect.left);
     var MouseY = parseInt(event.clientY - MainRect.top);
     if (Math.abs(MouseX - CurrentPixelX) <= 1 && Math.abs(MouseY - CurrentPixelY) <= 1) {
-    	if (MouseX == CurrentPixelX && MouseY == CurrentPixelY) {
         	CurrentPixelX = null;
             CurrentPixelY = null;
         	MainContext.clearRect(0, 0, MainCanvas.width, MainCanvas.height);
@@ -58,7 +57,6 @@ function CheckPixel(event) {
 		MainCanvas.width = 0;
 		MainCanvas.height = 0;
 		MainButton.value = null;
-        }
     }
 }
 </script>
