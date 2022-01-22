@@ -37,7 +37,7 @@
 <div id="StartButton" class="StartButton" onclick="Initialize()">START</div>
 <div id="TitleText" class="Hide" style="position: relative; font-family: Arial; font-weight: bold; text-align: center; color: #000000; top: 5px; transition-property: color; transition-duration: 1s;">Type the text below as fast as possible</div>
 <p class="Hide" id="MainText" style="font-family: Arial; text-align: center; color: #000000; user-select: none; transition-property: color; transition-duration: 1s;">The foreign country was besieged by a group of soldiers which were equipped with various firearms and melee weapons. A lot of people were killed in the process, but then a hero arrived and managed to make the soldiers retreat by using a special weapon.</p>
-<textarea class="Hide" disabled autocomplete="off" id="TextInput" placeholder="Type here..." style="width: calc(100% - 16px); height: 200px; margin: 5px; resize: none;"></textarea>
+<textarea class="Hide" disabled autocomplete="off" id="TextInput" placeholder="Type here..." style="width: calc(100% - 16px); height: 200px; margin: 5px; resize: none; transition-property: opacity; transition-duration: 1s;"></textarea>
 <script type="text/javascript">
 var StartButton = document.getElementById("StartButton");
 var InputElement = document.getElementById("TextInput");
@@ -76,6 +76,7 @@ function CheckTime() {
         InputElement.focus();
     	TitleElement.style.color = "#FFFFFF";
     	MainText.style.color = "#FFFFFF";
+	InputElement.style.opacity = 0.8
     	Background.style.opacity = 1;
     } else if (MainAudio.currentTime >= 36.7 && Ended == false) {
     	Running = false
@@ -83,6 +84,7 @@ function CheckTime() {
         InputElement.disabled = true;
     	TitleElement.style.color = "#000000";
     	MainText.style.color = "#000000";
+	InputElement.style.opacity = 1
     	Background.style.opacity = 0;
         setTimeout(Verify, 4000);
     }
