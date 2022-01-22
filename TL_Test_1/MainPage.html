@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Type Speed</title>
 <style>
 .StartButton {
-	position: absolute;
+    position: absolute;
     text-align: center;
     left: 50%;
     top: 50%;
@@ -20,11 +19,11 @@
 }
 
 .StartButton:hover {
-	background-color: #DDDD00;
+    background-color: #DDDD00;
 }
 
 .Hide {
-	display: none;
+    display: none;
 }
 </style>
 </head>
@@ -34,7 +33,7 @@
 </audio>
 <div id="StartButton" class="StartButton" onclick="Initialize()">START</div>
 <div id="TitleText" class="Hide" style="position: relative; font-family: Arial; font-weight: bold; text-align: center; top: 5px">Type the text below as fast as possible</div>
-<p class="Hide" id="MainText" style="font-family: Arial; text-align: center; user-select: none;">The foreign country was besieged by a group of soldiers which were equipped with various firearms and melee weapons. A lot of people were killed in the process, but then a hero arrived which managed to make the soldiers retreat by using a special weapon.</p>
+<p class="Hide" id="MainText" style="font-family: Arial; text-align: center; user-select: none;">The foreign country was besieged by a group of soldiers which were equipped with various firearms and melee weapons. A lot of people were killed in the process, but then a hero arrived and managed to make the soldiers retreat by using a special weapon.</p>
 <textarea class="Hide" disabled autocomplete="off" id="TextInput" placeholder="Type here..." style="width: 99%; height: 200px; resize: none;"></textarea>
 <script type="text/javascript">
 var StartButton = document.getElementById("StartButton");
@@ -47,13 +46,15 @@ var Ended = false;
 function Verify() {
 	if (InputElement.value == MainText.innerHTML) {
     	alert("You made it.");
+    } else {
+    	alert("You failed.");
     }
 }
 
 function Initialize() {
-	var Items = document.getElementsByClassName("Hide");
+    var Items = document.getElementsByClassName("Hide");
     var Length = Items.length
-	for (let Index = 0; Index < Length; Index++) {
+    for (let Index = 0; Index < Length; Index++) {
     	var Item = Items[0];
         Item.classList.remove("Hide");
     }
