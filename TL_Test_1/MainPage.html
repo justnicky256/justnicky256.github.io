@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Type Speed</title>
+<style>
+.StartButton {
+	position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 31px;
+    font-family: Arial;
+    background-color: #FFFF00;
+    width: 100px;
+    height: 30px;
+    border: 2px solid #000000;
+    user-select: none;
+    cursor: pointer;
+}
+
+.StartButton:hover {
+	background-color: #DDDD00;
+}
+
+.Hide {
+	display: none;
+}
+</style>
+</head>
+<body>
+<audio id="MainAudio" ontimeupdate="CheckTime()">
+<source src="https://nicogamer3000.github.io/TestMain/TL_Test_1/PageMusic.mp3" type="audio/mp3">
+</audio>
+<div id="StartButton" class="StartButton" onclick="Initialize()">START</div>
+<div id="TitleText" class="Hide" style="position: relative; font-family: Arial; font-weight: bold; text-align: center; top: 5px">Type the text below as fast as possible</div>
+<p class="Hide" id="MainText" style="font-family: Arial; text-align: center; user-select: none;">The foreign country was besieged by a group of soldiers which were equipped with various firearms and melee weapons. A lot of people were killed in the process, but then a hero arrived which managed to make the soldiers retreat by using a special weapon.</p>
+<textarea class="Hide" disabled autocomplete="off" id="TextInput" placeholder="Type here..." style="width: 99%; height: 200px; resize: none;"></textarea>
+<script type="text/javascript">
+var StartButton = document.getElementById("StartButton");
+var InputElement = document.getElementById("TextInput");
+var MainAudio = document.getElementById("MainAudio");
+var MainText = document.getElementById("MainText");
+var Running = false;
+var Ended = false;
+
+function Verify() {
+	if (InputElement.value == MainText.innerHTML) {
+    	alert("You made it.");
+    }
+}
+
+function Initialize() {
+	var Items = document.getElementsByClassName("Hide");
+    var Length = Items.length
+	for (let Index = 0; Index < Length; Index++) {
+    	var Item = Items[0];
+        Item.classList.remove("Hide");
+    }
+    
+    InputElement.onpaste = e => e.preventDefault();
+    StartButton.remove();
+    MainAudio.play();
+}
+
+function CheckTime() {
+	if (MainAudio.currentTime >= 3.6 && Running == false && Ended == false) {
+    	Running = true;
+        InputElement.removeAttribute("disabled");
+        InputElement.focus();
+    } else if (MainAudio.currentTime >= 36.7 && Ended == false) {
+    	Running = false
+        Ended = true
+        InputElement.disabled = true;
+        setTimeout(Verify, 4000);
+    }
+}
+</script>
+</body>
+</html>
