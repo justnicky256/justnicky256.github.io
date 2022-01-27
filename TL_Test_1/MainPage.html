@@ -58,7 +58,7 @@ function Verify() {
 
 function Initialize() {
 	var Items = document.getElementsByClassName("Hide");
-    var Length = Items.length
+        var Length = Items.length;
 	for (let Index = 0; Index < Length; Index++) {
     	var Item = Items[0];
         Item.classList.remove("Hide");
@@ -76,15 +76,15 @@ function CheckTime() {
         InputElement.focus();
     	TitleElement.style.color = "#FFFFFF";
     	MainText.style.color = "#FFFFFF";
-	InputElement.style.opacity = 0.8
+	InputElement.style.opacity = 0.8;
     	Background.style.opacity = 1;
     } else if (MainAudio.currentTime >= 36.7 && Ended == false) {
-    	Running = false
-        Ended = true
+    	Running = false;
+        Ended = true;
         InputElement.disabled = true;
     	TitleElement.style.color = "#000000";
     	MainText.style.color = "#000000";
-	InputElement.style.opacity = 1
+	InputElement.style.opacity = 1;
     	Background.style.opacity = 0;
         setTimeout(Verify, 4000);
     }
