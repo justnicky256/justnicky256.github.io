@@ -45,6 +45,7 @@ var TitleElement = document.getElementById("TitleText");
 var Background = document.getElementById("Background");
 var MainAudio = document.getElementById("MainAudio");
 var MainText = document.getElementById("MainText");
+var Started = false;
 var Running = false;
 var Ended = false;
 
@@ -57,36 +58,45 @@ function Verify() {
 }
 
 function Initialize() {
-	var Items = document.getElementsByClassName("Hide");
+    if (Started == false) {
+        Started = true;
+        var Items = document.getElementsByClassName("Hide");
         var Length = Items.length;
-	for (let Index = 0; Index < Length; Index++) {
-    	var Item = Items[0];
-        Item.classList.remove("Hide");
+        for (let Index = 0; Index < Length; Index++) {
+            var Item = Items[0];
+            Item.classList.remove("Hide");
+        }
+        InputElement.onpaste = e => e.preventDefault();
+        StartButton.remove();
+        MainAudio.play();
     }
     
-    InputElement.onpaste = e => e.preventDefault();
-    StartButton.remove();
-    MainAudio.play();
 }
 
 function CheckTime() {
-	if (MainAudio.currentTime >= 3.6 && Running == false && Ended == false) {
-    	Running = true;
+    if (MainAudio.currentTime >= 3.6 && Running == false && Ended == false) {
+        Running = true;
         InputElement.removeAttribute("disabled");
         InputElement.focus();
-    	TitleElement.style.color = "#FFFFFF";
-    	MainText.style.color = "#FFFFFF";
-	InputElement.style.opacity = 0.8;
-    	Background.style.opacity = 1;
+        TitleElement.style.color = "#FFFFFF";
+        MainText.style.color = "#FFFFFF";
+        InputElement.style.opacity = 0.8;
+        Background.style.opacity = 1;
     } else if (MainAudio.currentTime >= 36.7 && Ended == false) {
-    	Running = false;
+        Running = false;
         Ended = true;
         InputElement.disabled = true;
-    	TitleElement.style.color = "#000000";
-    	MainText.style.color = "#000000";
-	InputElement.style.opacity = 1;
-    	Background.style.opacity = 0;
+        TitleElement.style.color = "#000000";
+        MainText.style.color = "#000000";
+        InputElement.style.opacity = 1;
+        Background.style.opacity = 0;
         setTimeout(Verify, 4000);
+    }
+}
+
+document.onkeydown = function(Key) {
+    if (Key.keyCode == 13 && Started == false) {
+        Initialize();
     }
 }
 </script>
