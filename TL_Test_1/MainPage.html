@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 .StartButton {
-	position: absolute;
+    position: absolute;
     text-align: center;
     left: 50%;
     top: 50%;
@@ -21,11 +21,11 @@
 }
 
 .StartButton:hover {
-	background-color: #DDDD00;
+    background-color: #DDDD00;
 }
 
 .Hide {
-	display: none;
+    display: none;
 }
 </style>
 </head>
@@ -50,10 +50,10 @@ var Running = false;
 var Ended = false;
 
 function Verify() {
-	if (InputElement.value == MainText.innerHTML) {
-    	alert("You made it.");
+    if (InputElement.value == MainText.innerHTML) {
+        alert("You made it.");
     } else {
-    	alert("You failed.");
+        alert("You failed.");
     }
 }
 
@@ -70,7 +70,6 @@ function Initialize() {
         StartButton.remove();
         MainAudio.play();
     }
-    
 }
 
 function CheckTime() {
@@ -94,7 +93,7 @@ function CheckTime() {
     }
 }
 
-document.onkeydown = function(Key) {
+window.onkeydown = function(Key) {
     if (Key.keyCode == 13 && Started == false) {
         Initialize();
     }
