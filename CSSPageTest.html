@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0px;
+            }
+
+            .FlexClass {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .Container {
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: center;
+                align-content: center;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .Box {
+                margin: 10px;
+                width: 180px;
+                height: 180px;
+                background-color: white;
+                border: 40px solid black;
+                border-radius: 40px;
+                transition: margin 0.5s ease-in-out;
+            }
+
+            .NoMargin {
+                margin: 0px;
+            }
+
+            .Circle {
+                width: 90px;
+                height: 90px;
+                background-color: white;
+                border-radius: 50%;
+                border: 13px solid black;
+                transition: background-color 0.3s;
+            }
+
+            .Circle:hover {
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="Container">
+            <div class="FlexClass Box">
+                <div class="Circle"></div>
+            </div>
+            <div class="FlexClass Box">
+                <div class="Circle"></div>
+            </div>
+            <div class="FlexClass Box">
+                <div class="Circle"></div>
+            </div>
+            <div class="FlexClass Box">
+                <div class="Circle"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var Boxes = document.querySelectorAll(".Box");
+            var Enabled = false;
+            window.onclick = function() {
+                if (!Enabled) {
+                    for (Box of Boxes) {
+                        Box.classList.add("NoMargin");
+                    }
+                } else {
+                    for (Box of Boxes) {
+                        Box.classList.remove("NoMargin");
+                    }
+                }
+                Enabled = !Enabled;
+            }
+        </script>
+    </body>
+</html>
