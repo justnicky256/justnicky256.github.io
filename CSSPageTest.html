@@ -17,22 +17,22 @@
                 grid-template-columns: auto auto;
                 justify-content: center;
                 align-content: center;
+                gap: 20px;
                 width: 100vw;
                 height: 100vh;
+                transition: gap 0.5s ease-in-out;
             }
 
             .Box {
-                margin: 10px;
                 width: 180px;
                 height: 180px;
                 background-color: white;
                 border: 40px solid black;
                 border-radius: 40px;
-                transition: margin 0.5s ease-in-out;
             }
 
-            .NoMargin {
-                margin: 0px;
+            .NoGap {
+                gap: 0px;
             }
 
             .Circle {
@@ -65,17 +65,13 @@
             </div>
         </div>
         <script type="text/javascript">
-            var Boxes = document.querySelectorAll(".Box");
+            var Container = document.querySelector(".Container");
             var Enabled = false;
             window.onclick = function() {
                 if (!Enabled) {
-                    for (Box of Boxes) {
-                        Box.classList.add("NoMargin");
-                    }
+                    Container.classList.add("NoGap");
                 } else {
-                    for (Box of Boxes) {
-                        Box.classList.remove("NoMargin");
-                    }
+                    Container.classList.remove("NoGap");
                 }
                 Enabled = !Enabled;
             }
