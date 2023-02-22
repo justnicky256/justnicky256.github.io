@@ -66,14 +66,8 @@
         </div>
         <script type="text/javascript">
             var Container = document.querySelector(".Container");
-            var Enabled = false;
             window.onclick = function() {
-                if (!Enabled) {
-                    Container.classList.add("NoGap");
-                } else {
-                    Container.classList.remove("NoGap");
-                }
-                Enabled = !Enabled;
+                Container.classList.toggle("NoGap");
             }
         </script>
     </body>
