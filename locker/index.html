@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Entrance</title>
+    <script src="index.js" type="module"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+</head>
+<body>
+    <form id="main-form" class="main-content">
+        <input id="main-input" class="text-field" type="text" name="key" placeholder="Code..." required>
+        <button id="submit-btn" class="neon-button" type="submit" disabled>VIEW</button>
+    </form>
+    <div id="video-holder" class="video-align" style="display: none">
+        <div id="video-wrapper" class="video-wrapper">
+            <video style="visibility: hidden;"></video>
+        </div>
+    </div>
+    <div id="overlay" style="display: none;"></div>
+</body>
+</html>
