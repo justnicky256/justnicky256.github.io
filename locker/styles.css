@@ -136,6 +136,9 @@ button {
 
 video {
     display: block;
+}
+
+video, .image-container {
     max-width: 88.542vw;
     max-height: 74.074vh;
 }
@@ -170,7 +173,7 @@ video {
         width: 82.051vw;
     }
 
-    video {
+    video, .image-container {
         max-height: 192.308vh;
     }
 }
